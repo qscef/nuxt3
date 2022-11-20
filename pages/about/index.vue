@@ -1,4 +1,6 @@
 <template>
-    какой то текст 
-    <NuxtLink to="/">return</NuxtLink>
+  <div>какой то текст</div>
+  <NuxtLink to="/">
+    <span>return</span>
+  </NuxtLink>
 </template>
