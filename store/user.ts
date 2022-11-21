@@ -1,13 +1,13 @@
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 
 export const useUserStore = defineStore('user', () => {
-  const name = ref('')
+	const name = ref('');
 
-  const getName = computed(() => name)
+	const getName = computed(() => name);
 
-  const setName = (newName) => {
-    name.value = newName
-  }
+	const setName = newName => {
+		name.value = newName;
+	};
 
-  return { name, getName, setName }
-})
+	return { name, getName, setName };
+});
