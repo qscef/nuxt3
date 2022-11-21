@@ -5,7 +5,7 @@ export const useUserStore = defineStore('user', () => {
 
 	const getName = computed(() => name);
 
-	const setName = newName => {
+	const setName = (newName: string) => {
 		name.value = newName;
 	};
 

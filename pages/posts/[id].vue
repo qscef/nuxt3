@@ -21,36 +21,38 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Button from '~~/components/ui/UIButton.vue';
 import { useUserStore } from '@/store/user';
-export default {
-	setup() {
-		const userStore = useUserStore();
-		const route = useRoute();
-		const id = ref(route.params.id);
 
-		definePageMeta({
-			layout: 'post',
-			middleware: 'auth',
+const userStore = useUserStore();
+const route = useRoute();
+const id = ref('');
+if (!Array.isArray(route.params.id)) {
+	id.value = route.params.id || '';
+}
+
+definePageMeta({
+	layout: 'post',
+	middleware: 'auth',
+});
+
+const runtimeConfig = useRuntimeConfig();
+
+const comments: { id: string; email: string; body: string }[] = reactive([]);
+const loadInfo = async () => {
+	const { data } = await useFetch<
+		{ id: string; email: string; body: string }[]
+	>(runtimeConfig.public.apiBase + `/posts/${id.value}/comments`);
+	if (Array.isArray(data.value)) {
+		data.value.forEach(comment => {
+			comments.push({
+				id: comment.id,
+				email: comment.email,
+				body: comment.body,
+			});
 		});
-
-		const runtimeConfig = useRuntimeConfig();
-
-		const comments = reactive([]);
-		const loadInfo = async () => {
-			const data = await useFetch(
-				runtimeConfig.public.apiBase + `/posts/${id.value}/comments`,
-			);
-			comments.push(...data.data.value);
-		};
-
-		return {
-			Button,
-			userStore,
-			loadInfo,
-		};
-	},
+	}
 };
 </script>
 

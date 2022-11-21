@@ -23,8 +23,10 @@ definePageMeta({
 
 const runtimeConfig = useRuntimeConfig();
 
-const data = await useFetch(runtimeConfig.public.apiBase + '/posts');
-const posts = data.data;
+const { data } = await useFetch<{ id: string; title: string }[]>(
+	runtimeConfig.public.apiBase + '/posts',
+);
+const posts = data;
 // console.log(posts); // posts появится еще при SSR соответственно console.log увидишь в терминале сборки
 </script>
 
