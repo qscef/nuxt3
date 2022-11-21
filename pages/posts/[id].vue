@@ -16,31 +16,40 @@
       <div>{{ comment.body }}</div>
     </div>
     <div class="additional-info">
-      post page with id {{ id }} user name = {{ user?.name }}
+      post page with id {{ id }} user name = {{ userStore.name }}
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import Button from "~~/components/ui/UIButton.vue";
+import { useUserStore } from '@/store/user'
+export default {
+  setup() {
+    const userStore = useUserStore()
+    const route = useRoute();
+    const id = ref(route.params.id);
 
-const route = useRoute();
-const id = ref(route.params.id);
+    definePageMeta({
+      layout: "post",
+      middleware: "auth",
+    });
 
-definePageMeta({
-  layout: "post",
-  middleware: "auth",
-});
+    const runtimeConfig = useRuntimeConfig();
 
-const runtimeConfig = useRuntimeConfig();
+    const comments = reactive([]);
+    const loadInfo = async () => {
+      const data = await useFetch(
+        runtimeConfig.public.apiBase + `/posts/${id.value}/comments`
+      );
+      comments.push(...data.data.value);
+    };
 
-const comments = reactive([]);
-const loadInfo = async () => {
-  const data = await useFetch(
-    runtimeConfig.public.apiBase + `/posts/${id.value}/comments`
-  );
-  comments.push(...data.data.value);
-};
+    return {
+      Button, userStore, loadInfo
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

@@ -15,11 +15,14 @@
 <script setup lang="ts">
 import Button from "~~/components/ui/UIButton.vue";
 import Input from "~~/components/ui/UIInput.vue";
+import { useUserStore } from '@/store/user'
+
+const userStore = useUserStore()
 
 const user = ref("");
 
 const authorization = () => {
-  // console.log(user);
+  userStore.setName(user.value)
 };
 </script>
 

@@ -21,5 +21,9 @@
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "typescript": "^4.9.0"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.4",
+    "pinia": "^2.0.24"
   }
 }

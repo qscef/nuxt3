@@ -26,7 +26,8 @@
     "noStrictGenericChecks": false,
     "types": [
       "@nuxt/types",
-      "@nuxtjs/universal-storage"
+      "@nuxtjs/universal-storage",
+      "@pinia/nuxt"
     ]
   }
 }
