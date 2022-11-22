@@ -28,8 +28,8 @@ import { useUserStore } from '@/store/user';
 const userStore = useUserStore();
 const route = useRoute();
 const id = ref('');
-if (!Array.isArray(route.params.id)) {
-	id.value = route.params.id || '';
+if (!Array.isArray(route.params['id'])) {
+	id.value = route.params['id'] || '';
 }
 
 definePageMeta({
