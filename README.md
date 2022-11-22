@@ -70,3 +70,31 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/prese
 
 * попытка использовать editConfig - однако он не применяется(используется для автоустановки размера отступов в IDE)
 ```
+
+## ВНИМАНИЕ НА ТЕСТИРОВАНИЕ 
+
+```bash
+Образовалась проблема, в виду того, что linter не сканировал папку components.
+Не нашлось лучше способа чем проверить руками папку
+    "lint-all": "eslint ." - проверяет весь проект кроме папки components
+    "lint-components": "eslint ./components/**.vue" - проверяет все файлы формата .vue в папке components
+    "lint-components-in-folder": "eslint ./components/**/**.vue" - проверяет все файлы формата .vue в любой папке в папке components
+    "lint-components-in-folder2": "eslint ./components/**/**/**.vue" - проверяет все файлы формата .vue в любой папке в любой папке в папке components
+т.е. получается linter проверит такую вложенность 
+    components/
+        ui/
+            Button.vue
+            Input.vue
+        form/
+            MobileForm/
+                Index.vue
+            DesktopForm/
+                Index.vue
+            MainForm.vue
+        Filter.vue
+более грубокая вложенность не будет проверяться линтером - для этого надо добавить новую проверку и внестри в "lint": "redrun ...."
+
+redrun - библиотека для распаралеливания проверок - чтобы ускорить работу линтера
+
+p.s. Если падает ошибка линтера в какой-то из проверок, ошибки из остальных контейнеров не отобразятся.
+```

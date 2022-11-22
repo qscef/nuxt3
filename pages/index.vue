@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="modal">
-			<img src="~/assets/images/logo.webp"/>
+			<img src="~/assets/images/logo.webp" />
 			<h2>Авторизуйтесь</h2>
 			<Input @change-value="user = $event" />
 			<Button text="Запомнить меня" @btn-click="authorization()" />
