@@ -9,13 +9,13 @@
     "lint": "redrun lint-all lint-components lint-components-in-folder lint-components-in-folder2 -p -q",
     "lint-fix": "redrun lint-all-fix lint-components-fix lint-components-in-folder-fix lint-components-in-folder2-fix -p -q",
     "lint-all": "eslint .",
-    "lint-components": "eslint ./components/**.vue",
-    "lint-components-in-folder": "eslint ./components/**/**.vue",
-    "lint-components-in-folder2": "eslint ./components/**/**/**.vue",
+    "lint-components": "eslint ./components/**.vue --no-error-on-unmatched-pattern",
+    "lint-components-in-folder": "eslint ./components/**/**.vue --no-error-on-unmatched-pattern",
+    "lint-components-in-folder2": "eslint ./components/**/**/**.vue --no-error-on-unmatched-pattern",
     "lint-all-fix": "eslint . --fix",
-    "lint-components-fix": "eslint ./components/**.vue --fix",
-    "lint-components-in-folder-fix": "eslint ./components/**/**.vue --fix",
-    "lint-components-in-folder2-fix": "eslint ./components/**/**/**.vue --fix"
+    "lint-components-fix": "eslint ./components/**.vue --fix --no-error-on-unmatched-pattern",
+    "lint-components-in-folder-fix": "eslint ./components/**/**.vue --fix --no-error-on-unmatched-pattern",
+    "lint-components-in-folder2-fix": "eslint ./components/**/**/**.vue --fix --no-error-on-unmatched-pattern"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",

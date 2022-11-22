@@ -8,4 +8,5 @@
 
 <script setup lang="ts">
 const value = ref('');
+defineEmits(['change-value']);
 </script>
