@@ -6,16 +6,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "redrun lint-all lint-components lint-components-in-folder lint-components-in-folder2 -p -q",
-    "lint-fix": "redrun lint-all-fix lint-components-fix lint-components-in-folder-fix lint-components-in-folder2-fix -p -q",
-    "lint-all": "eslint .",
-    "lint-components": "eslint ./components/**.vue --no-error-on-unmatched-pattern",
-    "lint-components-in-folder": "eslint ./components/**/**.vue --no-error-on-unmatched-pattern",
-    "lint-components-in-folder2": "eslint ./components/**/**/**.vue --no-error-on-unmatched-pattern",
-    "lint-all-fix": "eslint . --fix",
-    "lint-components-fix": "eslint ./components/**.vue --fix --no-error-on-unmatched-pattern",
-    "lint-components-in-folder-fix": "eslint ./components/**/**.vue --fix --no-error-on-unmatched-pattern",
-    "lint-components-in-folder2-fix": "eslint ./components/**/**/**.vue --fix --no-error-on-unmatched-pattern"
+    "lint": "eslint --ext .ts,.js,.vue .",
+    "lint-fix": "eslint --ext .ts,.js,.vue . --fix"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
@@ -27,7 +19,6 @@
     "eslint-plugin-vue": "^9.7.0",
     "nuxt": "3.0.0-rc.13",
     "prettier": "^2.7.1",
-    "redrun": "^10.0.2",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "typescript": "^4.9.0"
