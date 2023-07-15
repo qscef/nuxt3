@@ -18,11 +18,13 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
-			apiBase: process.env.APP_API_URL,
+			apiBase: process.env["APP_API_URL"],
 		},
 	},
 	typescript: {
 		strict: true,
 	},
-	buildModules: ['@pinia/nuxt'],
+	modules: [
+		'@pinia/nuxt',
+	],
 });
